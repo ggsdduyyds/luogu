@@ -1,20 +1,19 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdbool.h>
+
+void mcf(int n, bool plus);
 
 int main() {
-	char buf[150] = "";
 	int n;
 	scanf("%d", &n);
-	mcf(n, buf);
-	printf("%s", buf);
+	mcf(n, false);
 	return 0;
 }
 
-void mcf(int n, char buf[]) {
+void mcf(int n, bool plus) {
 	if (n > 0) {
-		int len = strlen(buf);
-		if (len > 0 && buf[len-1] != '(') {
-			strcat(buf, "+");
+		if (plus) {
+			printf("+");
 		}
 		int cf = 2, c = 0;
 		while(cf <= n) {
@@ -23,19 +22,19 @@ void mcf(int n, char buf[]) {
 		}
 		int s = cf / 4;
 		if (0 == s) {
-			strcat(buf, "2(0)");
+			printf("2(0)");
 		} else if (1 == s) {
-			strcat(buf, "2");
+			printf("2");
 		} else if (2 == s) {
-			strcat(buf, "2(2)");
+			printf("2(2)");
 		} else {
-			strcat(buf, "2(");
-			mcf(c, buf);
-			strcat(buf, ")");
+			printf("2(");
+			mcf(c, false);
+			printf(")");
 		}
 		n = n - cf / 2;
 		if (n > 0) {
-			mcf(n, buf);
+			mcf(n, true);
 		}
 	}
 }

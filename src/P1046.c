@@ -3,7 +3,9 @@
 int main() {
 	int a[10];
 	int h, c = 0;
-	scanf("%d %d %d %d %d %d %d %d %d %d", &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9]);
+	for (int i=0; i<10; i++) {
+		scanf("%d", &a[i]);
+	}
 	h = h + 30;
 	for (int i=0; i<10; i++) {
 		if (h >= a[i]) {
